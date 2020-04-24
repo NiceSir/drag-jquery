@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #module{
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="module"></div>
+    <script>
+        let module=document.getElementById('module')
+        module.onmousedown=function(e){
+            
+            document.onmousemove=function(ev){
+                // console.log(ev.pageY)
+                // console.log(module.style.pageY)
+
+                e.target.style.top=ev.pageY-e.offsetY+'px'
+                e.target.style.left=ev.pageX-e.offsetX+'px'
+            }
+        }
+        document.onmouseup=function(){
+            document.onmousemove=null
+        }
+    </script>
+</body>
+</html>

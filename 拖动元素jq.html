@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #module{
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="module"></div>
+    <script src="../jquery.min.js"></script>
+    <script>
+        let module=$('#module')
+        module.mousedown(function(e){
+            let _this=$(this)
+            // console.log(_this.offset().top)
+            $(window).mousemove(function(ev){
+                // console.log(ev.pageY)
+                // console.log(this)
+                // console.log(ev)
+                _this.css({
+                    'top':ev.pageY-e.offsetY+'px',
+                    'left':ev.pageX-e.offsetX+'px'
+                })
+            })
+        })
+        $(window).mouseup(function(){
+            $(window).off('mousemove')
+        })
+    </script>
+</body>
+</html>
